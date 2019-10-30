@@ -24,6 +24,6 @@ language:
 before_script:
 #  - carthage update --cache-builds --platform ios
 script:
-  - bundle exec fastlane scan -s MyServiceDemo
+  - bundle exec fastlane scan -s WHCoreServicesDemo
   - bundle exec danger
   - swiftlint
