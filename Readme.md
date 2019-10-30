@@ -8,4 +8,4 @@ Colleciton of common tools.
 * Keychain Wrapper 
 
 ## Author
-[Wayne Hsiao](mailto://chronicqazxc@gmail.com)
+[Wayne Hsiao](mailto:chronicqazxc@gmail.com)
