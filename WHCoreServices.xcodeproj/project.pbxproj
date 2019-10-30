@@ -104,6 +104,7 @@
 		A6984093234F35A000F25FB1 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		A6A167382335F99600E1143F /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		A6B88E2323695B1D0004495F /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		A6B88E2423695DFB0004495F /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A6BA10E1233E04BE00A81A94 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		A6BA10E6233E06C300A81A94 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		A6BA10ED233E0F6A00A81A94 /* KeychainQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainQueryable.swift; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 		B0B95D852255201F00A40158 = {
 			isa = PBXGroup;
 			children = (
+				A6B88E2423695DFB0004495F /* .travis.yml */,
 				A6B88E2323695B1D0004495F /* Readme.md */,
 				B0B95DB022566E5000A40158 /* WHCoreServices.xcconfig */,
 				B0B95D912255201F00A40158 /* WHCoreServices */,
