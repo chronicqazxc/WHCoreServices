@@ -99,6 +99,8 @@ public class Service {
     
     public func resume(request: URLRequest,
                        completionHandler: @escaping NetworkCompletionHandler) {
+        var request = request
+        request.cachePolicy = .reloadIgnoringCacheData
         if let session = session as? URLSession {
             let task = session.dataTask(with: request) { (data, response, error) in
                 completionHandler(data, response, error)
