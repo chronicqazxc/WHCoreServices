@@ -50,6 +50,7 @@ public class Service {
     public func post(url: URL,
                      body: [AnyHashable: Any]? = nil,
                      overrideHeader: [String: String]? = nil,
+                     token: String? = nil,
                      completionHandler: @escaping NetworkCompletionHandler) {
         
         do {
@@ -63,19 +64,13 @@ public class Service {
             }
 //            request.addValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
 //            request.addValue("application/vnd.github.machine-man-preview+json", forHTTPHeaderField: "Accept")
-
-            if let session = session as? URLSession {
-                let task = session.dataTask(with: request) { (data, response, error) in
-                    completionHandler(data, response, error)
-                }
-
-                task.resume()
-            } else {
-                let task = session.dataTask(with: request) { (data, response, error) in
-                    completionHandler(data, response, error)
-                }
-                task.resume()
+            
+            if let token = token {
+                request = setToken(token: token, to: request)
             }
+
+            resume(request: request,
+                   completionHandler: completionHandler)
         } catch {
             print(error.localizedDescription)
             completionHandler(nil, nil, error)
@@ -84,6 +79,7 @@ public class Service {
 
     public func get(url: URL,
                     overrideHeader: [String: String]? = nil,
+                    token: String? = nil,
                     completionHandler: @escaping NetworkCompletionHandler) {
 
         var request = URLRequest(url: url)
@@ -93,7 +89,16 @@ public class Service {
         })
 //        request.addValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
 //        request.addValue("application/vnd.github.machine-man-preview+json", forHTTPHeaderField: "Accept")
+        if let token = token {
+            request = setToken(token: token, to: request)
+        }
 
+        resume(request: request,
+               completionHandler: completionHandler)
+    }
+    
+    public func resume(request: URLRequest,
+                       completionHandler: @escaping NetworkCompletionHandler) {
         if let session = session as? URLSession {
             let task = session.dataTask(with: request) { (data, response, error) in
                 completionHandler(data, response, error)
@@ -162,5 +167,13 @@ extension Service {
         }
 
         return urlPath
+    }
+}
+
+extension Service {
+    public func setToken(token: String, to request: URLRequest) -> URLRequest {
+        var request = request
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return request
     }
 }
